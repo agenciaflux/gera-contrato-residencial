@@ -1,0 +1,24 @@
+/* src/components/footer/styles.css */
+
+.footer {
+    position: fixed; /* Fixa o footer na parte inferior */
+    bottom: 0; /* Fica na parte inferior da página */
+    left: 0; /* Alinha à esquerda */
+    width: 100%; /* Largura total */
+    background-color: #343a40; /* Cor de fundo escura */
+    color: white; /* Cor do texto branca */
+    padding: 1rem; /* Espaçamento interno */
+    text-align: center; /* Centraliza o texto */
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.3); /* Sombra superior */
+    z-index: 1000; /* Garante que o footer fique acima de outros elementos */
+}
+
+.footer-links a {
+    color: #ffffff; /* Cor dos links em branco */
+    margin: 0 10px; /* Espaço entre os links */
+    text-decoration: none; /* Remove sublinhado */
+}
+
+.footer-links a:hover {
+    color: #a0aec0; /* Cor ao passar o mouse */
+}

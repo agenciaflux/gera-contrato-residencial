@@ -1,0 +1,80 @@
+/* src/components/wizardForm/styles.css */
+
+.wizard-form {
+    padding: 2rem; /* Espaçamento interno */
+    background-color: #f8f9fa; /* Cor de fundo igual ao footer e sidebar */
+    border-radius: 8px; /* Bordas arredondadas */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Sombra */
+}
+
+.input {
+    width: 100%; /* Largura total */
+    padding: 0.5rem; /* Espaçamento interno */
+    margin-bottom: 1rem; /* Espaço entre inputs */
+    border: 1px solid #ccc; /* Borda */
+    border-radius: 4px; /* Bordas arredondadas */
+    background-color: white; /* Cor de fundo dos inputs */
+}
+
+h1, h2 {
+    text-align: center; /* Centraliza o texto */
+    color: #343a40; /* Cor do texto */
+}
+
+.mt-16 {
+    margin-top: 4rem; /* Margem superior */
+}
+
+button {
+    transition: background-color 0.3s, transform 0.2s; /* Transições para animações suaves */
+}
+
+button:hover {
+    transform: scale(1.02); /* Efeito de aumento ao passar o mouse */
+}
+
+.flex {
+    display: flex; /* Flexbox para layout */
+}
+
+.justify-between {
+    justify-content: space-between; /* Justifica os itens com espaço entre */
+}
+
+.rounded-lg {
+    border-radius: 0.5rem; /* Bordas arredondadas para botões */
+}
+
+.py-2 {
+    padding-top: 0.5rem; /* Padding vertical */
+    padding-bottom: 0.5rem; /* Padding vertical */
+}
+
+.px-4 {
+    padding-left: 1rem; /* Padding horizontal */
+    padding-right: 1rem; /* Padding horizontal */
+}
+
+.bg-blue-500 {
+    background-color: #007bff; /* Cor de fundo do botão "Próximo" */
+}
+
+.bg-green-500 {
+    background-color: #28a745; /* Cor de fundo do botão "Gerar PDF" */
+}
+
+.bg-gray-500 {
+    background-color: #6c757d; /* Cor de fundo do botão "Voltar" */
+}
+
+.hover\:bg-blue-600:hover {
+    background-color: #0056b3; /* Cor ao passar o mouse no botão "Próximo" */
+}
+
+.hover\:bg-green-600:hover {
+    background-color: #218838; /* Cor ao passar o mouse no botão "Gerar PDF" */
+}
+
+.hover\:bg-gray-600:hover {
+    background-color: #5a6268; /* Cor ao passar o mouse no botão "Voltar" */
+}

@@ -1,0 +1,48 @@
+/* src/components/sidebar/styles.css */
+
+.sidebar {
+    position: fixed; /* Fixa na lateral */
+    top: 0; /* Começa no topo */
+    left: 0;
+    height: 100%; /* Altura total */
+    width: 200px; /* Largura da sidebar */
+    background-color: #343a40; /* Cor de fundo (escuro) */
+    color: white; /* Cor do texto */
+    padding: 1rem; /* Espaçamento interno */
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.3); /* Sombra */
+    border: none; /* Remove a borda branca */
+    outline: none; /* Remove qualquer contorno que possa aparecer */
+}
+
+.sidebar-title {
+    font-size: 1.25rem; /* Tamanho do título */
+    font-weight: bold; /* Deixa o título em negrito */
+    margin-bottom: 1.5rem; /* Espaço abaixo do título */
+    text-align: center; /* Centraliza o título */
+}
+
+.sidebar-nav {
+    display: flex;
+    flex-direction: column; /* Coloca os links em coluna */
+}
+
+.sidebar-link {
+    margin-bottom: 1rem; /* Espaço entre links */
+    color: white; /* Cor dos links */
+    text-decoration: none; /* Remove sublinhado */
+    padding: 0.5rem 1rem; /* Espaçamento interno dos links */
+    border-radius: 4px; /* Arredonda os cantos */
+    transition: background-color 0.2s; /* Efeito de transição para o fundo */
+}
+
+.sidebar-link:hover {
+    background-color: #495057; /* Cor de fundo ao passar o mouse */
+}
+
+.sidebar-icon {
+    height: 20px; /* Tamanho do ícone */
+    width: 20px; /* Tamanho do ícone */
+    margin-right: 0.5rem; /* Espaço entre o ícone e o texto */
+    vertical-align: middle; /* Alinha o ícone verticalmente */
+    display: inline-block; /* Garante que o ícone e o texto fiquem na mesma linha */
+}

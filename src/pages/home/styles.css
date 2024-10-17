@@ -1,0 +1,9 @@
+/* src/pages/home/styles.css */
+
+.home {
+    background-color: #343a40; /* Cor de fundo (preto escuro) */
+    color: white; /* Cor do texto (branco) */
+    min-height: calc(100vh - 60px); /* Altura mínima para não sobrepor o footer */
+    padding: 20px; /* Espaçamento interno */
+    box-sizing: border-box; /* Inclui padding no cálculo de largura/altura */
+}

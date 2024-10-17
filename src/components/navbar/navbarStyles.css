@@ -1,0 +1,46 @@
+/* src/components/navbar/styles.css */
+
+.navbar {
+    display: flex; /* Permite que os itens da navbar sejam dispostos em linha */
+    justify-content: space-between; /* Distribui os itens igualmente */
+    align-items: center; /* Centraliza os itens verticalmente */
+    background-color: #f8fafc; /* Cor de fundo */
+    padding: 1rem; /* Espaçamento interno */
+    width: 100%; /* Faz a navbar ocupar 100% da largura da tela */
+    position: fixed; /* Fixa a navbar no topo */
+    top: 0; /* Alinha ao topo da página */
+    left: 0; /* Alinha à esquerda */
+    z-index: 1000; /* Garante que fique acima de outros elementos */
+    border-bottom: 1px solid #e5e7eb; /* Borda inferior para separar visualmente */
+}
+
+.container {
+    display: flex;
+    justify-content: space-between; /* Espaça logo e links */
+}
+
+.link {
+    margin-right: 16px; /* Espaço entre links */
+    color: white; /* Cor dos links */
+    text-decoration: none; /* Remove sublinhado */
+}
+
+.link:hover {
+    color: #a0aec0; /* Cor ao passar o mouse */
+}
+
+/* src/components/navbar/navbarStyles.css */
+
+.logout-button {
+    background-color: #f44336; /* Cor de fundo */
+    color: white; /* Cor do texto */
+    border: none; /* Sem borda */
+    padding: 10px 15px; /* Espaçamento interno */
+    cursor: pointer; /* Muda o cursor para indicar que é clicável */
+    margin-left: auto; /* Alinha à direita */
+}
+
+.logout-button:hover {
+    background-color: #d32f2f; /* Cor de fundo ao passar o mouse */
+}
+

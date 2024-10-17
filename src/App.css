@@ -1,3 +1,10 @@
+body {
+  background-color: #f8fafc; /* Cor de fundo que combina com a navbar e o footer */
+  margin: 0; /* Remove margens padrão */
+  font-family: 'Arial', sans-serif; /* Altera a fonte, se desejado */
+}
+
+
 .App {
   font-family: Arial, sans-serif;
   margin: 20px;
