@@ -3,7 +3,7 @@ import { useForm } from 'react-hook-form';
 import jsPDF from 'jspdf';
 import './styles.css'
 
-function WizardForm() {
+function ResidentialForm() {
     const { register, handleSubmit } = useForm();
     const [step, setStep] = useState(1);
     const [locadorCpf, setLocadorCpf] = useState('');
@@ -125,7 +125,7 @@ function WizardForm() {
     return (
         <div className="bg-gray-100 min-h-screen flex items-center justify-center">
             <div className="bg-white p-8 rounded-lg shadow-lg w-full max-w-lg">
-                <h1 className="text-2xl font-bold mb-6 text-center">Gerar Contrato de Locação Imóvel Residencial</h1>
+                <h1 className="text-2xl font-bold mb-6 text-center">Contrato Residencial</h1>
                 <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
                     {step === 1 && (
                         <>
@@ -220,4 +220,4 @@ function WizardForm() {
     );
 }
 
-export default WizardForm;
+export default ResidentialForm;

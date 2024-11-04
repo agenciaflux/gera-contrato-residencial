@@ -1,11 +1,5 @@
 /* src/components/wizardForm/styles.css */
 
-.wizard-form {
-    padding: 2rem; /* Espaçamento interno */
-    background-color: #f8f9fa; /* Cor de fundo igual ao footer e sidebar */
-    border-radius: 8px; /* Bordas arredondadas */
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Sombra */
-}
 
 .input {
     width: 100%; /* Largura total */
