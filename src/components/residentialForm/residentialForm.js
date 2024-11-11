@@ -51,73 +51,125 @@ function ResidentialForm() {
             locadorCpf: locadorCpf,
             locatarioCpf: locatarioCpf,
         };
-
+    
         // Lógica para gerar o PDF
         const doc = new jsPDF('p', 'mm', 'a4');
         doc.setFontSize(10);
-
+    
+        // Título "LOCAÇÃO RESIDENCIAL" em negrito
+        doc.setFont("helvetica", "bold");
+    
+        // Calculando a largura do título e centralizando na página
+        const title = "LOCAÇÃO RESIDENCIAL";
+        const titleWidth = doc.getTextWidth(title);
+        const pageWidth = doc.internal.pageSize.width;
+        const titleX = (pageWidth - titleWidth) / 2; // Calculando a posição X para centralizar
+    
+        // Adiciona o título centralizado
+        doc.text(title, titleX, 10); // Posição X calculada, Y em 10
+    
+        // Adicionando o espaçamento após o título
+        const spacingAfterTitle = 10;  // Ajuste o valor conforme necessário
+        let cursorY = 10 + spacingAfterTitle; // Posição Y após o título
+    
+        // Defina marginTop como 10 ou outro valor desejado
+        const marginTop = cursorY;
+    
+        // Volta para a fonte normal para o resto do contrato
+        doc.setFont("helvetica", "normal");
+    
+        // Contrato com variáveis que devem ser formatadas em negrito
         const contrato = `
-    LOCAÇÃO RESIDENCIAL
-
-    ${contratoData.locadorNome}, ${contratoData.locadorCpf}, ${contratoData.locadorRg}, ${contratoData.locadorEndereco}, doravante denominado LOCADOR; ${contratoData.locatarioNome}, ${contratoData.locatarioCpf},
-    ${contratoData.locatarioRg}, ${contratoData.locatarioEndereco}, doravante denominado LOCATÁRIO, celebram o presente contrato de locação residencial, com as cláusulas e condições seguintes:
-    1) O LOCADOR cede para locação residencial ao LOCATÁRIO, o imóvel situado no endereço: ${contratoData.imovelEndereco}.
-    2) A locação destina-se ao uso exclusivo como residência e domicílio do LOCATÁRIO.
-    3) O prazo de locação é de ${contratoData.tempoLocacao} meses, iniciando-se em ${formatDate(contratoData.dataInicio)} e terminando em ${formatDate(contratoData.dataTermino)} limite de tempo em que o imóvel objeto do presente deverá ser restituído independenteente de qualquer notificação ou interpelação sob pena de caracterizar infração contratual.
-    4) O aluguel mensal será de R$ ${contratoData.aluguel}, e deverá ser pago até a data de seu vencimento dia ${contratoData.diaVencimento} do mês seguinte ao vencido, no local do endereço do LOCADOR ou outro que o mesma venha a designar.
-    4.1) A impontualidade acarretará juros moratórios de 1% ao mês. Atraso superior a 30 dias implicará correção monetária e multa de 10%.
-    5) O aluguel será reajustado anualmente pelo índice ${contratoData.indiceReajuste}.
-    6) Em caso de prorrogação do contrato, o aluguel será ajustado a preço de mercado.
-    7) Cobranças judiciais/extrajudiciais incluirão honorários advocatícios de 20%.
-    8) O imóvel destina-se ao uso exclusivo do LOCATÁRIO, não podendo ser sublocado sem autorização do LOCADOR.
-    9) O LOCATÁRIO será responsável por despesas de luz, água, esgoto, condomínio, impostos e outras taxas.
-    10) O LOCATÁRIO compromete-se a respeitar as regras do condomínio.
-    11) A entrega das chaves será processada após quitação de todas as despesas.
-    12) O LOCADOR poderá vistoriar o imóvel sempre que necessário.
-    13) O LOCATÁRIO deve comunicar ao LOCADOR sua intenção de devolução com 30 dias de antecedência.
-    14) O LOCATÁRIO compromete-se a solicitar vistoria 30 dias antes da desocupação.
-    15) Modificações no imóvel só poderão ser feitas com autorização do LOCADOR.
-    16) Em caso de incêndio, falência ou desapropriação, o contrato será rescindido sem direito a indenização.
-    17) O LOCATÁRIO autoriza citação por meios eletrônicos.
-    18) A parte infratora pagará multa de uma vez o valor do aluguel vigente.
-    19) Devolução antecipada do imóvel implicará em multa de 2 vezes o valor do aluguel, reduzido proporcionalmente ao período já cumprido.
-    20) Qualquer tolerância do LOCADOR não implicará em renúncia de direitos.
-    21) Permanecendo o LOCATÁRIO no imóvel após o prazo, pagará aluguel estabelecido na notificação premonitória.
-    22) Caso o imóvel seja vendido, o LOCATÁRIO renuncia ao direito de preferência e autoriza visitas.
-    23) O LOCATÁRIO se compromete a devolver o imóvel nas mesmas condições em que o recebeu.
-    24) O FIADOR se compromete solidariamente com o LOCATÁRIO, até a entrega das chaves, em caso de prorrogação.
-    25) Em caso de insolvência do fiador, o LOCATÁRIO deverá substituí-lo dentro de 30 dias.
-    26) Fica eleito o foro do domicílio do LOCADOR para dirimir quaisquer questões oriundas deste contrato.
-
-    Local e Data: ${data.localContrato}, ${formatDate(new Date().toLocaleDateString())}
-
-    Assinaturas:
-    LOCADOR: ${contratoData.locadorNome}
-    LOCATÁRIO: ${contratoData.locatarioNome}
-    FIADOR: ${contratoData.fiadorNome || "Nome do Fiador"}
-
-    Testemunhas:
-    ${contratoData.testemunha1Nome || "Nome da Testemunha 1"}, ${contratoData.testemunha1Rg || "RG da Testemunha 1"}
-    ${contratoData.testemunha2Nome || "Nome da Testemunha 2"}, ${contratoData.testemunha2Rg || "RG da Testemunha 2"}
-    `;
-
-        const textLines = doc.splitTextToSize(contrato, 180);
+        ${contratoData.locadorNome}, ${contratoData.locadorCpf}, ${contratoData.locadorRg}, ${contratoData.locadorEndereco}, doravante denominado LOCADOR; 
+        ${contratoData.locatarioNome}, ${contratoData.locatarioCpf}, ${contratoData.locatarioRg}, ${contratoData.locatarioEndereco}, doravante denominado LOCATÁRIO, celebram o presente contrato de locação residencial, com as cláusulas e condições seguintes:
+        1) O LOCADOR cede para locação residencial ao LOCATÁRIO, o imóvel situado no endereço: ${contratoData.imovelEndereco}.
+        2) A locação destina-se ao uso exclusivo como residência e domicílio do LOCATÁRIO.
+        3) O prazo de locação é de ${contratoData.tempoLocacao} meses, iniciando-se em ${formatDate(contratoData.dataInicio)} e terminando em ${formatDate(contratoData.dataTermino)} limite de tempo em que o imóvel objeto do presente deverá ser restituído independenteente de qualquer notificação ou interpelação sob pena de caracterizar infração contratual.
+        4) O aluguel mensal será de R$ ${contratoData.aluguel}, e deverá ser pago até a data de seu vencimento dia ${contratoData.diaVencimento} do mês seguinte ao vencido, no local do endereço do LOCADOR ou outro que o mesma venha a designar.
+        4.1) A impontualidade acarretará juros moratórios de 1% ao mês. Atraso superior a 30 dias implicará correção monetária e multa de 10%.
+        5) O aluguel será reajustado anualmente pelo índice ${contratoData.indiceReajuste}.
+        6) Em caso de prorrogação do contrato, o aluguel será ajustado a preço de mercado.
+        7) Cobranças judiciais/extrajudiciais incluirão honorários advocatícios de 20%.
+        8) O imóvel destina-se ao uso exclusivo do LOCATÁRIO, não podendo ser sublocado sem autorização do LOCADOR.
+        9) O LOCATÁRIO será responsável por despesas de luz, água, esgoto, condomínio, impostos e outras taxas.
+        10) O LOCATÁRIO compromete-se a respeitar as regras do condomínio.
+        11) A entrega das chaves será processada após quitação de todas as despesas.
+        12) O LOCADOR poderá vistoriar o imóvel sempre que necessário.
+        13) O LOCATÁRIO deve comunicar ao LOCADOR sua intenção de devolução com 30 dias de antecedência.
+        14) O LOCATÁRIO compromete-se a solicitar vistoria 30 dias antes da desocupação.
+        15) Modificações no imóvel só poderão ser feitas com autorização do LOCADOR.
+        16) Em caso de incêndio, falência ou desapropriação, o contrato será rescindido sem direito a indenização.
+        17) O LOCATÁRIO autoriza citação por meios eletrônicos.
+        18) A parte infratora pagará multa de uma vez o valor do aluguel vigente.
+        19) Devolução antecipada do imóvel implicará em multa de 2 vezes o valor do aluguel, reduzido proporcionalmente ao período já cumprido.
+        20) Qualquer tolerância do LOCADOR não implicará em renúncia de direitos.
+        21) Permanecendo o LOCATÁRIO no imóvel após o prazo, pagará aluguel estabelecido na notificação premonitória.
+        22) Caso o imóvel seja vendido, o LOCATÁRIO renuncia ao direito de preferência e autoriza visitas.
+        23) O LOCATÁRIO se compromete a devolver o imóvel nas mesmas condições em que o recebeu.
+        24) O FIADOR se compromete solidariamente com o LOCATÁRIO, até a entrega das chaves, em caso de prorrogação.
+        25) Em caso de insolvência do fiador, o LOCATÁRIO deverá substituí-lo dentro de 30 dias.
+        26) Fica eleito o foro do domicílio do LOCADOR para dirimir quaisquer questões oriundas deste contrato.
+    
+        Local e Data: ${data.localContrato}, ${formatDate(new Date().toLocaleDateString())}
+    
+        Assinaturas:
+        LOCADOR: ${contratoData.locadorNome}
+        LOCATÁRIO: ${contratoData.locatarioNome}
+        FIADOR: ${contratoData.fiadorNome || "Nome do Fiador"}
+    
+        Testemunhas:
+        ${contratoData.testemunha1Nome || "Nome da Testemunha 1"}, ${contratoData.testemunha1Rg || "RG da Testemunha 1"}
+        ${contratoData.testemunha2Nome || "Nome da Testemunha 2"}, ${contratoData.testemunha2Rg || "RG da Testemunha 2"}
+        `;
+    
+        // Agora ajustamos a largura disponível para o texto, garantindo uma margem extra
+        const textMaxWidth = 170; // Largura máxima do texto com margem (reduzido para 170mm)
+        
+        // Quebra o texto em linhas de acordo com a largura máxima ajustada
+        const textLines = doc.splitTextToSize(contrato, textMaxWidth);
         let lineHeight = 10;
-        let marginTop = 10;
         let pageHeight = doc.internal.pageSize.height;
-
-        let cursorY = marginTop;
+    
+        // Agora vamos garantir que o texto não ultrapasse a altura da página
         textLines.forEach((line) => {
+            // Se a linha não couber na página, adicionamos uma nova página
             if (cursorY + lineHeight > pageHeight - 10) {
                 doc.addPage();
-                cursorY = marginTop;
+                cursorY = marginTop + spacingAfterTitle; // Reseta a posição para o topo da nova página
             }
-            doc.text(line, 10, cursorY);
-            cursorY += lineHeight;
+    
+            // Dividindo a linha em palavras e verificando se precisa ser negrito
+            const words = line.split(" ");
+            let cursorX = 10; // Posição inicial X para o texto
+    
+            words.forEach((word) => {
+                // Verifica se a palavra é uma das que precisa de destaque (em negrito)
+                if (
+                    word.includes("LOCADOR") ||
+                    word.includes("LOCATÁRIO") ||
+                    word.includes("FIADOR")
+                ) {
+                    doc.setFont("helvetica", "bold"); // Aplica o negrito
+                    doc.text(word, cursorX, cursorY);
+                    cursorX += doc.getTextWidth(word) + 2; // Atualiza a posição X após a palavra
+                    doc.setFont("helvetica", "normal"); // Volta à fonte normal
+                } else {
+                    doc.setFont("helvetica", "normal");
+                    doc.text(word, cursorX, cursorY);
+                    cursorX += doc.getTextWidth(word) + 2;
+                }
+            });
+    
+            cursorY += lineHeight; // Atualiza a posição Y
         });
-
+    
+        // Salva o PDF gerado
         doc.save('contrato-locacao.pdf');
     };
+    
+    
+    
+    
 
     const nextStep = () => setStep(step + 1);
     const prevStep = () => setStep(step - 1);
