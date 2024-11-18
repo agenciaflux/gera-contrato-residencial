@@ -10,15 +10,15 @@ const Sidebar = () => {
             <nav className="sidebar-nav">
                 <Link to="/gerar-contrato" className="sidebar-link"> 
                     <DocumentIcon className="sidebar-icon" />
-                    Contrato Residencial
+                    Residencial
                 </Link>
                 <Link to="/gerar-contrato-comercial" className="sidebar-link"> 
                     <DocumentIcon className="sidebar-icon" />
-                    Contrato Comercial
+                    Comercial
                 </Link>
                 <Link to="/gerar-recibo" className="sidebar-link"> 
                     <DocumentIcon className="sidebar-icon" />
-                    Recibo de Aluguel
+                    Recibo
                 </Link>
             </nav>
         </div>
