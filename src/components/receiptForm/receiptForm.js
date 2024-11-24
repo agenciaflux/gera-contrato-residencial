@@ -78,20 +78,21 @@ function ReciboAluguel() {
         // Salvar o PDF
         doc.save('recibo-aluguel.pdf');
     };
-    
-    
-    
-    
-    
-    
 
     //const nextStep = () => setStep(step + 1);
     const prevStep = () => setStep(step - 1);
 
     return (
-        <div className="bg-gray-100 min-h-screen flex items-center justify-center">
+        <div className="bg-gray-100 min-h-screen flex items-center justify-center content-with-header">
             <div className="bg-white p-8 rounded-lg shadow-lg w-full max-w-lg">
-                <h1 className="text-2xl font-bold mb-6 text-center">Recibo de Aluguel</h1>
+                {/* Parte que exibe o título e a introdução */}
+                <div className="recibo-container mb-6">
+                    <h1 className="text-xl font-bold">Recibo de Aluguel</h1>
+                    <p>Aqui você pode gerar o recibo de aluguel.</p>
+                    <p>Preencha as informações abaixo para gerar o seu recibo.</p>
+                </div>
+
+                {/* Formulário com múltiplos passos */}
                 <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
                     {step === 1 && (
                         <>

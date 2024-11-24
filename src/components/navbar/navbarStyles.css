@@ -1,46 +1,68 @@
-/* src/components/navbar/styles.css */
-
+/* Navbar */
 .navbar {
-    display: flex; /* Permite que os itens da navbar sejam dispostos em linha */
-    justify-content: space-between; /* Distribui os itens igualmente */
-    align-items: center; /* Centraliza os itens verticalmente */
-    background-color: #f8fafc; /* Cor de fundo */
-    padding: 1rem; /* Espaçamento interno */
-    width: 100%; /* Faz a navbar ocupar 100% da largura da tela */
-    position: fixed; /* Fixa a navbar no topo */
-    top: 0; /* Alinha ao topo da página */
-    left: 0; /* Alinha à esquerda */
-    z-index: 1000; /* Garante que fique acima de outros elementos */
-    border-bottom: 1px solid #e5e7eb; /* Borda inferior para separar visualmente */
-}
-
-.container {
+    background-color: #1f2937;
+    color: white;
+    padding: 1rem;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    z-index: 1000;
     display: flex;
-    justify-content: space-between; /* Espaça logo e links */
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 
-.link {
-    margin-right: 16px; /* Espaço entre links */
-    color: white; /* Cor dos links */
-    text-decoration: none; /* Remove sublinhado */
+.navbar .text-lg {
+    font-weight: bold;
+    margin-left: 10px; /* Adiciona a margem à esquerda para dar espaço ao botão */
 }
 
-.link:hover {
-    color: #a0aec0; /* Cor ao passar o mouse */
+.navbar .navbar-links {
+    display: flex;
+    gap: 1rem;
 }
 
-/* src/components/navbar/navbarStyles.css */
-
-.logout-button {
-    background-color: #f44336; /* Cor de fundo */
-    color: white; /* Cor do texto */
-    border: none; /* Sem borda */
-    padding: 10px 15px; /* Espaçamento interno */
-    cursor: pointer; /* Muda o cursor para indicar que é clicável */
-    margin-left: auto; /* Alinha à direita */
+.navbar .navbar-link {
+    color: white;
+    text-decoration: none;
+    transition: color 0.2s ease;
 }
 
-.logout-button:hover {
-    background-color: #d32f2f; /* Cor de fundo ao passar o mouse */
+.navbar .navbar-link:hover {
+    color: #9ca3af;
+}
+
+/* Botão de toggle */
+.menu-toggle {
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+    margin-left: 0; /* Sem margem esquerda no botão */
+}
+
+.menu-icon {
+    width: 24px;
+    height: 24px;
+}
+
+/* Ajustes para o botão de menu nas telas menores */
+@media (max-width: 768px) {
+    .navbar-container {
+        position: relative;
+    }
+
+    .menu-toggle {
+        position: absolute;
+        right: 10px;
+        top: 10px; /* Ajuste o valor conforme necessário */
+        z-index: 1001;
+    }
+
+    .menu-icon {
+        width: 24px;
+        height: 24px;
+    }
 }
 

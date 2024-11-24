@@ -158,7 +158,7 @@ const CommercialForm = () => {
 
 
     return (
-        <div className="bg-gray-100 min-h-screen flex items-center justify-center">
+        <div className="bg-gray-100 min-h-screen flex items-center justify-center content-with-header">
             <div className="bg-white p-8 rounded-lg shadow-lg w-full max-w-lg">
                 <h1 className="text-2xl font-bold mb-6 text-center">Contrato Comercial</h1>
                 <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">

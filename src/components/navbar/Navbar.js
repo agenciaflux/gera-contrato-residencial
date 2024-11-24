@@ -1,27 +1,20 @@
-// src/components/Navbar.js
-
 import React from 'react';
-import { Link } from 'react-router-dom'; 
+import { Link } from 'react-router-dom';
+import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
 import './navbarStyles.css';
 
-const Navbar = ({ onLogout }) => {
+const Navbar = ({ toggleSidebar, isSidebarVisible }) => {
     return (
-        <nav className="bg-gray-800 text-white p-4 fixed w-full z-10 top-0">
-            <div className="container mx-auto flex justify-between">
-                <div className="text-lg font-bold">
-                    <Link to="/">Gerador de Contratos</Link>
-                </div>
-                <div>
-                    <Link to="/" className="mr-4 hover:text-gray-400">Home</Link>
-                    <Link to="/sobre" className="mr-4 hover:text-gray-400">Sobre</Link>
-                   <button 
-                        onClick={onLogout} 
-                        className="bg-red-500 text-white hover:bg-red-600 px-4 py-2 rounded" // Estilo do botão
-                    >
-                        Sair
-                    </button>
-                </div>
+        <nav className="navbar">
+            <div className="text-lg">
+                <Link to="/">Gerador de Contratos</Link>
             </div>
+
+            {/* Botão de toggle do menu (hambúrguer) para telas pequenas */}
+            <button onClick={toggleSidebar} className="menu-toggle md:hidden">
+                {/* Usando o ícone correto, dependendo da visibilidade da sidebar */}
+                {isSidebarVisible ? <XMarkIcon className="w-6 h-6 text-white" /> : <Bars3Icon className="w-6 h-6 text-white" />}
+            </button>
         </nav>
     );
 };

@@ -1,3 +1,10 @@
+/* Para telas menores, garantir que o conteúdo tenha uma margem superior */
+@media (max-width: 768px) {
+    .content-with-header {
+        margin-top: 100px; /* Ajuste de acordo com o tamanho da Navbar */
+    }
+}
+
 /* Adicione este CSS ao seu arquivo styles.css para aplicar o estilo */
 .input {
     border: 1px solid #ccc;
