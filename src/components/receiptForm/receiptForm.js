@@ -9,14 +9,14 @@ function ReciboAluguel() {
 
     const onSubmit = (data) => {
         const doc = new jsPDF('p', 'mm', 'a4');
-    
+
         const lineHeight = 8; // Altura da linha
         const marginX = 20; // Margem horizontal
         const marginY = 20; // Margem vertical
         const pageWidth = doc.internal.pageSize.width - 2 * marginX; // Largura disponível
         const pageHeight = doc.internal.pageSize.height; // Altura da página
         let cursorY = marginY; // Cursor vertical inicial
-    
+
         // Função para verificar se precisa de uma nova página
         const checkPageBreak = (increment = lineHeight) => {
             if (cursorY + increment > pageHeight - marginY) {
@@ -24,23 +24,33 @@ function ReciboAluguel() {
                 cursorY = marginY; // Reinicia o cursor no topo da nova página
             }
         };
-    
+
         // Título
         doc.setFontSize(14);
         doc.setFont('helvetica', 'bold');
         doc.text('RECIBO DE ALUGUEL', pageWidth / 2 + marginX, cursorY, { align: 'center' });
         cursorY += lineHeight + 5;
-    
+
         // Texto principal
         doc.setFontSize(12);
         doc.setFont('helvetica', 'normal');
         doc.text(`Recebi do(a): `, marginX, cursorY);
+
+        // Nome do Locatário
         doc.setFont('helvetica', 'bold');
-        doc.text(`${data.nomeLocatario}`, marginX + 30, cursorY); // Nome em negrito
+
+        //doc.text(`${data.nomeLocatario}`, marginX + 30, cursorY); // Nome em negrito
+        const nomeLocatarioLines = doc.splitTextToSize(data.nomeLocatario, pageWidth - marginX);
+        nomeLocatarioLines.forEach((line) => {
+            doc.text(line, marginX + 30, cursorY);
+            cursorY += lineHeight;
+            checkPageBreak();
+        });
+
         doc.setFont('helvetica', 'normal');
         cursorY += lineHeight;
         checkPageBreak();
-    
+
         doc.text(`a quantia de `, marginX, cursorY);
         doc.setFont('helvetica', 'bold');
         doc.text(`R$ ${data.valorAluguel},00`, marginX + 25, cursorY); // Valor em negrito
@@ -49,32 +59,41 @@ function ReciboAluguel() {
         cursorY += lineHeight;
         checkPageBreak();
 
+        // Endereço do Imóvel
         doc.text(`no endereço `, marginX, cursorY);
         doc.setFont('helvetica', 'bold');
-        doc.text(`${data.enderecoImovel},`, marginX + 25, cursorY); // Endereço em negrito
+
+        //doc.text(`${data.enderecoImovel},`, marginX + 25, cursorY); // Endereço em negrito
+        // Quebra de texto para o endereço do imóvel
+        const enderecoImovelLines = doc.splitTextToSize(data.enderecoImovel, pageWidth - marginX);
+        enderecoImovelLines.forEach((line) => {
+            doc.text(line, marginX + 25, cursorY);
+            cursorY += lineHeight;
+            checkPageBreak();
+        });
         doc.setFont('helvetica', 'normal');
         doc.text(`,`, marginX + 80, cursorY);
-    
         cursorY += lineHeight;
+        
         doc.text(`vencido no dia `, marginX, cursorY);
         doc.setFont('helvetica', 'bold');
         doc.text(`${data.diaVencimento}`, marginX + 28, cursorY); // Data de vencimento em negrito
         doc.setFont('helvetica', 'normal');
         doc.text(`, dando plena, total e irrevogável quitação.`, marginX + 50, cursorY);
-    
+
         // Assinatura e data
         cursorY += lineHeight * 2;
         checkPageBreak();
         doc.line(marginX, cursorY, pageWidth + marginX, cursorY); // Linha de assinatura
         cursorY += lineHeight;
         doc.text('Assinatura do Locador', pageWidth / 2 + marginX, cursorY, { align: 'center' });
-    
+
         cursorY += lineHeight * 2;
         checkPageBreak();
         doc.text(`Data da quitação: `, marginX, cursorY);
         doc.setFont('helvetica', 'bold');
         doc.text(`${data.dataRecibo}`, marginX + 40, cursorY); // Data de quitação em negrito
-    
+
         // Salvar o PDF
         doc.save('recibo-aluguel.pdf');
     };
