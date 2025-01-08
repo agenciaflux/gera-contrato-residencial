@@ -1,0 +1,11 @@
+version: "3.8"
+
+services:
+  app:
+    image: app_image:latest # Imagem agora está no registro
+    ports:
+      - "3001:3001"
+    deploy:
+      replicas: 1
+      restart_policy:
+        condition: on-failure
