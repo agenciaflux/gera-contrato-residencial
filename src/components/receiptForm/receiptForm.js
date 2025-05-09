@@ -74,10 +74,10 @@ function ReciboAluguel() {
         doc.setFont('helvetica', 'normal');
         doc.text(`,`, marginX + 80, cursorY);
         cursorY += lineHeight;
-        
+
         doc.text(`vencido no dia `, marginX, cursorY);
         doc.setFont('helvetica', 'bold');
-        doc.text(`${data.diaVencimento}`, marginX + 28, cursorY); // Data de vencimento em negrito
+        doc.text(`  ${data.diaVencimento}`, marginX + 28, cursorY); // Data de vencimento em negrito
         doc.setFont('helvetica', 'normal');
         doc.text(`, dando plena, total e irrevogável quitação.`, marginX + 50, cursorY);
 
